@@ -42,12 +42,12 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           cd /home/ubuntu/myproject
-          git pull origin main
-          kubectl apply -f secrets.yaml
-          kubectl apply -f deployment.yaml
-          kubectl apply -f service.yaml
-          kubectl get pods
-          kubectl get services
+          sudo git pull origin main
+          sudo kubectl apply -f secrets.yaml
+          sudo kubectl apply -f deployment.yaml
+          sudo kubectl apply -f service.yaml
+          sudo kubectl get pods
+          sudo kubectl get services
     
 
 
