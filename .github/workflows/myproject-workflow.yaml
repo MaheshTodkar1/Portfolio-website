@@ -43,7 +43,7 @@ jobs:
         script: |
           cd /home/ubuntu/myproject
           git pull origin main
-          kubectl apply -f .secrets.yaml
+          kubectl apply -f secrets.yaml
           kubectl apply -f deployment.yaml
           kubectl apply -f service.yaml
           kubectl get pods
