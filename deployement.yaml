@@ -15,17 +15,17 @@ spec:
         app: MyApp
     spec:
       containers:
-      - name: MyApp-container
+      - name: myapp-container
         image: maheshtodkar/myresume-website:latest
         ports:
         - containerPort: 80
         env:
-        - name: docker-USERNAME
+        - name: DOCKER_USERNAME
           valueFrom:
            secretKeyRef:
              name: secrets-docker
              key: docker-username
-        - name: docker_password
+        - name: DOCKER_PASSWORD
           valueFrom:
            secretKeyRef:
              name: secrets-docker
