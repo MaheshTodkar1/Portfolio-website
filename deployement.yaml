@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-deployment
+  labels:
+    app: MyApp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: MyApp
+  template:
+    metadata:
+      labels:
+        app: MyApp
+    spec:
+      containers:
+      - name: MyApp-container
+        image: maheshtodkar/myresume-website:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: docker-USERNAME
+          valueFrom:
+           secretKeyRef:
+             name: secrets-docker
+             key: docker-username
+        - name: docker_password
+          valueFrom:
+           secretKeyRef:
+             name: secrets-docker
+             key: docker-password
