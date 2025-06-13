@@ -42,7 +42,7 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         timeout: 120s
         script: |
-          cd /home/ubuntu/myproject
+          cd /home/ubuntu/myproject/Portfolio-website
           sudo git pull origin main || git clone https://github.com/MaheshTodkar1/Portfolio-website.git .
           
           # Set kubectl context
