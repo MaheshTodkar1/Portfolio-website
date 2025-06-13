@@ -17,5 +17,6 @@ spec:
       containers:
       - name: portfolio-container
         image: maheshtodkar/myresume-website:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
