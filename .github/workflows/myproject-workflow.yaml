@@ -24,8 +24,9 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: maheshtodkar/myresume-website:latest
-
+        tags: |
+         maheshtodkar/myresume-website:latest
+         maheshtodkar/myresume-website:${{ github.sha }}
 
   deploy:
     needs: build
@@ -51,6 +52,9 @@ jobs:
           # Apply manifests (remove secrets.yaml since not needed)
           kubectl apply -f deployment.yaml
           kubectl apply -f service.yaml
+
+          # Restart deployment to ensure new image is pulled
+          kubectl rollout restart deployment/website-deployment
           
           # Wait for rollout
           kubectl rollout status deployment/website-deployment --timeout=120s
